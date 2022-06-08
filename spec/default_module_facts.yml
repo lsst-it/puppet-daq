@@ -1,0 +1,9 @@
+---
+osfamily: 'RedHat'   # service provider
+operatingsystem: 'CentOS'   # service provider
+os:
+  family: 'RedHat'
+  name: 'CentOS'
+networking:
+  hostname: 'foo'
+path: '/usr/bin'  # puppet/systemd

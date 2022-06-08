@@ -1,0 +1,18 @@
+[Unit]
+Description=Virtual RCE Proxy
+Requires=network-online.target
+After=network-online.target
+
+[Service]
+EnvironmentFile=/etc/lsst/daq.conf
+User=rce
+Group=daq
+Type=forking
+ExecStart=/bin/sh -c "${release}/x86/bin/dsm_startup ${backingdir}  ${virtual_ats_rce} ${interface}"
+ExecStop=/usr/bin/killall -u rce
+#Restart=always
+#RestartSec=10
+CPUSchedulingPolicy=fifo
+
+[Install]
+WantedBy=multi-user.target

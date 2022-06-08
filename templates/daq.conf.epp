@@ -1,0 +1,15 @@
+onfiguration for Distributed Storage Service
+#
+
+# DAQ Release Path
+release=/srv/nfs/lsst-daq/daq-sdk/current
+
+# Network Interface Name
+interface=lsst-daq
+
+# Virtual RCE Locations
+# A list of ATCA locations enclosed in " " or NONE
+virtual_comcam_rce="16/3/2"
+virtual_ats_rce="16/3/0" 
+backingdir=/srv/nfs/lsst-daq/vrce/
+

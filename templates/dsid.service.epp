@@ -1,0 +1,18 @@
+[Unit]
+Description=Distributed Service Interface Daemon (DSID)
+Requires=network-online.target
+After=network-online.target
+
+[Service]
+EnvironmentFile=/etc/lsst/daq.conf
+User=dsid
+Group=daq
+Type=forking
+ExecStart=/bin/sh -c "${release}/x86/bin/dsid_startup ${backingdir} ${interface}"
+ExecStop=/usr/bin/killall dsid.service
+#Restart=always
+#RestartSec=10
+CPUSchedulingPolicy=fifo
+
+[Install]
+WantedBy=multi-user.target

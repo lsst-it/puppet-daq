@@ -38,7 +38,7 @@ describe 'daq' do
         it do
           is_expected.to contain_service(svc).with(
             enable: true,
-          )
+          ).that_subscribes_to('File[/etc/lsst/daq.conf]')
         end
       end
     end

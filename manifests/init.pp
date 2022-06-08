@@ -24,13 +24,15 @@ class daq {
     content => epp("${module_name}/dsid.service.epp"),
   }
   -> service { 'dsid':
-    enable => true,
+    enable    => true,
+    subscribe => File[$conf_file],
   }
 
   systemd::unit_file { 'rce.service':
     content => epp("${module_name}/rce.service.epp"),
   }
   -> service { 'rce':
-    enable => true,
+    enable    => true,
+    subscribe => File[$conf_file],
   }
 }

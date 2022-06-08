@@ -24,6 +24,7 @@ class daq {
     content => epp("${module_name}/dsid.service.epp"),
   }
   -> service { 'dsid':
+    ensure    => 'running',
     enable    => true,
     subscribe => File[$conf_file],
   }
@@ -32,6 +33,7 @@ class daq {
     content => epp("${module_name}/rce.service.epp"),
   }
   -> service { 'rce':
+    ensure    => 'running',
     enable    => true,
     subscribe => File[$conf_file],
   }

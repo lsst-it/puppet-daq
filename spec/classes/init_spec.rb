@@ -32,14 +32,17 @@ describe 'daq' do
         it do
           is_expected.to contain_systemd__unit_file("#{svc}.service").with(
             content: %r{EnvironmentFile=/etc/lsst/daq.conf},
-          ).that_comes_before("Service[#{svc}]")
+          )
         end
 
         it do
-          is_expected.to contain_service(svc).with(
-            ensure: 'running',
-            enable: true,
-          ).that_subscribes_to('File[/etc/lsst/daq.conf]')
+          is_expected.to contain_service(svc)
+            .with(
+              ensure: 'running',
+              enable: true,
+            )
+            .that_subscribes_to('File[/etc/lsst/daq.conf]')
+            .that_subscribes_to("Systemd::Unit_file[#{svc}.service]")
         end
       end
     end

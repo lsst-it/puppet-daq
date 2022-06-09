@@ -12,8 +12,27 @@ describe 'daq' do
       it { is_expected.to compile.with_all_deps }
 
       it do
+        is_expected.to contain_file('/opt/lsst/rpt-sdk').with(
+          ensure: 'directory',
+          mode: '0755',
+          owner: 'root',
+          group: 'root',
+        )
+      end
+
+      it do
+        is_expected.to contain_file('/opt/lsst/rpt-sdk/dl').with(
+          ensure: 'directory',
+          mode: '0755',
+          owner: 'root',
+          group: 'root',
+        )
+      end
+
+      it do
         is_expected.to contain_file('/etc/lsst').with(
           ensure: 'directory',
+          mode: '0755',
           owner: 'root',
           group: 'root',
         )
@@ -22,6 +41,7 @@ describe 'daq' do
       it do
         is_expected.to contain_file('/etc/lsst/daq.conf').with(
           ensure: 'file',
+          mode: '0644',
           owner: 'root',
           group: 'root',
           content: %r{interface=lsst-daq},

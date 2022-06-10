@@ -8,6 +8,9 @@ describe 'daq::service::dsid class' do
     group { 'daq': }
     user { 'dsid': gid => 'daq' }
 
+    class { 'daq':
+      interface => $facts['networking']['primary'],
+    }
     include daq::service::dsid
     PP
   end
@@ -19,7 +22,7 @@ describe 'daq::service::dsid class' do
     it { is_expected.to be_owned_by 'root' }
     it { is_expected.to be_grouped_into 'root' }
     it { is_expected.to be_mode '644' } # serverspec does not like a leading 0
-    its(:content) { is_expected.to match %r{interface=lsst-daq} }
+    its(:content) { is_expected.to match %r{interface=#{fact('networking.primary')}} }
   end
 
   describe service('dsid') do

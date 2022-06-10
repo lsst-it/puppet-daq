@@ -1,9 +1,11 @@
+<%- | String $interface,
+| -%>
 #
 # Configuration for Distributed Storage Service
 #
 
 # Network Interface Name
-interface=lsst-daq
+interface=<%= $interface %>
 
 # Virtual RCE Locations
 # A list of ATCA locations enclosed in " " or NONE

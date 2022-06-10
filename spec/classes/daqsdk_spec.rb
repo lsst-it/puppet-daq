@@ -15,9 +15,12 @@ describe 'daq::daqsdk' do
         it do
           is_expected.to contain_file('/opt/lsst/daq-sdk').with(
             ensure: 'directory',
-            mode: '0755',
             owner: 'root',
             group: 'root',
+            mode: '0755',
+            force: true,
+            purge: true,
+            recurse: true,
           )
         end
 

@@ -21,14 +21,17 @@ class daq::daqsdk (
   $install_path  = "${daq_base_path}/${version}"
   $current_path  = "${daq_base_path}/current"
 
+  # Purge unmanaged versions.  Currently, only one version may be installed at
+  # a time.  The $dl_path file resource should protect previously downloaded
+  # artifacts from being purged.
   file { $daq_base_path:
-    ensure => directory,
-    owner  => 'root',
-    group  => 'root',
-    mode   => '0755',
-    #recurse => true,
-    #purge   => true,
-    #force   => true,
+    ensure  => directory,
+    owner   => 'root',
+    group   => 'root',
+    mode    => '0755',
+    force   => true,
+    purge   => true,
+    recurse => true,
   }
 
   file { $dl_path:

@@ -2,10 +2,7 @@
 
 require 'voxpupuli/acceptance/spec_helper_acceptance'
 
-configure_beaker do |host|
-  install_package(host, 'git')
-  install_module_from_forge_on(host, 'puppetlabs/accounts', '> 7 < 8')
-end
+configure_beaker
 
 shared_examples 'an idempotent resource' do
   it 'applies with no errors' do

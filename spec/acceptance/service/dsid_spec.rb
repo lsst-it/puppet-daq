@@ -5,7 +5,8 @@ require 'spec_helper_acceptance'
 describe 'daq::service::dsid class' do
   let(:pp) do
     <<-PP
-    accounts::user { 'dsid': }
+    group { 'daq': }
+    user { 'dsid': gid => 'daq' }
 
     include daq::service::dsid
     PP

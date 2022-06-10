@@ -5,7 +5,8 @@ require 'spec_helper_acceptance'
 describe 'daq::service::rce class' do
   let(:pp) do
     <<-PP
-    accounts::user { 'rce': }
+    group { 'daq': }
+    user { 'rce': gid => 'daq' }
 
     include daq::service::rce
     PP

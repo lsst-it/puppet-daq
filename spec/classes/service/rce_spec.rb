@@ -18,14 +18,14 @@ describe 'daq::service::rce' do
             mode: '0644',
             owner: 'root',
             group: 'root',
-            content: %r{release=/opt/lsst/daq-sdk/current},
+            content: %r{interface=lsst-daq},
           )
         end
 
         it do
-          is_expected.to contain_systemd__unit_file('rce.service').with(
-            content: %r{EnvironmentFile=/etc/sysconfig/daq},
-          )
+          is_expected.to contain_systemd__unit_file('rce.service')
+            .with_content(%r{EnvironmentFile=/etc/sysconfig/daq})
+            .with_content(%r{ExecStart=/opt/lsst/daq-sdk/current/x86/bin/dsm_startup})
         end
 
         it do

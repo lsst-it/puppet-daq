@@ -1,4 +1,6 @@
-<%- | String $env_file | -%>
+<%- | String $env_file,
+      String $current_path,
+| -%>
 [Unit]
 Description=Distributed Service Interface Daemon (DSID)
 Requires=network-online.target
@@ -9,8 +11,7 @@ EnvironmentFile=<%= $env_file %>
 User=dsid
 Group=daq
 Type=forking
-ExecStart=/bin/sh -c "${release}/x86/bin/dsid_startup ${backingdir} ${interface}"
-ExecStop=/usr/bin/killall dsid.service
+ExecStart=<%= $current_path %>/x86/bin/dsid_startup ${backingdir} ${interface}
 #Restart=always
 #RestartSec=10
 CPUSchedulingPolicy=fifo

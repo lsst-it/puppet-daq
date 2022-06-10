@@ -19,6 +19,7 @@ class daq::rptsdk (
   $dl_file       = "${dl_path}/${archive_name}"
   $source        = "${repo_url}/${archive_name}"
   $install_path  = "${rpt_base_path}/${version}"
+  $current_path  = "${rpt_base_path}/current"
 
   file { $rpt_base_path:
     ensure => directory,
@@ -62,7 +63,7 @@ class daq::rptsdk (
     require   => Archive[$dl_file],
   }
 
-  file { "${rpt_base_path}/current":
+  file { $current_path:
     ensure => link,
     owner  => 'root',
     group  => 'root',

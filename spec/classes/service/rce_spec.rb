@@ -18,7 +18,7 @@ describe 'daq::service::rce' do
             mode: '0644',
             owner: 'root',
             group: 'root',
-            content: %r{interface=lsst-daq},
+            content: %r{release=/opt/lsst/daq-sdk/current},
           )
         end
 

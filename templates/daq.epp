@@ -1,9 +1,10 @@
+<%- | String $current_path | -%>
 #
 # Configuration for Distributed Storage Service
 #
 
 # DAQ Release Path
-release=/srv/nfs/lsst-daq/daq-sdk/current
+release=<%= $current_path %>
 
 # Network Interface Name
 interface=lsst-daq

@@ -3,48 +3,22 @@
 require 'spec_helper'
 
 describe 'daq' do
-  on_supported_os.each do |_os, facts|
-    let(:facts) do
-      facts
-    end
-
-    describe 'without any parameters' do
-      it { is_expected.to compile.with_all_deps }
-
-      it do
-        is_expected.to contain_file('/etc/lsst').with(
-          ensure: 'directory',
-          mode: '0755',
-          owner: 'root',
-          group: 'root',
-        )
+  on_supported_os.each do |os, facts|
+    context "on #{os}" do
+      let(:facts) do
+        facts
       end
 
-      it do
-        is_expected.to contain_file('/etc/lsst/daq.conf').with(
-          ensure: 'file',
-          mode: '0644',
-          owner: 'root',
-          group: 'root',
-          content: %r{interface=lsst-daq},
-        )
-      end
+      describe 'without any parameters' do
+        it { is_expected.to compile.with_all_deps }
 
-      %w[rce dsid].each do |svc|
         it do
-          is_expected.to contain_systemd__unit_file("#{svc}.service").with(
-            content: %r{EnvironmentFile=/etc/lsst/daq.conf},
+          is_expected.to contain_file('/opt/lsst').with(
+            ensure: 'directory',
+            mode: '0755',
+            owner: 'root',
+            group: 'root',
           )
-        end
-
-        it do
-          is_expected.to contain_service(svc)
-            .with(
-              ensure: 'running',
-              enable: true,
-            )
-            .that_subscribes_to('File[/etc/lsst/daq.conf]')
-            .that_subscribes_to("Systemd::Unit_file[#{svc}.service]")
         end
       end
     end

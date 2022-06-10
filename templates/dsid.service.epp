@@ -1,10 +1,11 @@
+<%- | String $env_file | -%>
 [Unit]
 Description=Distributed Service Interface Daemon (DSID)
 Requires=network-online.target
 After=network-online.target
 
 [Service]
-EnvironmentFile=/etc/lsst/daq.conf
+EnvironmentFile=<%= $env_file %>
 User=dsid
 Group=daq
 Type=forking

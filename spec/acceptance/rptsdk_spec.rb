@@ -5,9 +5,6 @@ require 'spec_helper_acceptance'
 describe 'daq::rptsdk class' do
   let(:pp) do
     <<-PP
-    accounts::user { 'dsid': }
-    accounts::user { 'rce': }
-
     include daq::rptsdk
     PP
   end

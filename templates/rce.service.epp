@@ -1,10 +1,11 @@
+<%- | String $env_file | -%>
 [Unit]
 Description=Virtual RCE Proxy
 Requires=network-online.target
 After=network-online.target
 
 [Service]
-EnvironmentFile=/etc/lsst/daq.conf
+EnvironmentFile=<%= $env_file %>
 User=rce
 Group=daq
 Type=forking

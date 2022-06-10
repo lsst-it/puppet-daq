@@ -57,7 +57,7 @@ describe 'daq::daqsdk' do
           ensure: 'link',
           owner: 'root',
           group: 'root',
-          target: '/opt/lsst/daq-sdk/R5-V3.2',
+          target: 'R5-V3.2',
         )
       end
     end

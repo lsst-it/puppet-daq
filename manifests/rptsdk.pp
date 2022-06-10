@@ -66,6 +66,6 @@ class daq::rptsdk (
     ensure => link,
     owner  => 'root',
     group  => 'root',
-    target => $install_path,
+    target => $version,
   }
 }

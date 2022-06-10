@@ -34,7 +34,7 @@ describe 'daq::daqsdk class' do
 
   describe file('/opt/lsst/daq-sdk/current') do
     it { is_expected.to be_symlink }
-    it { is_expected.to be_linked_to '/opt/lsst/daq-sdk/R5-V3.2' }
+    it { is_expected.to be_linked_to 'R5-V3.2' }
     it { is_expected.to be_owned_by 'root' }
     it { is_expected.to be_grouped_into 'root' }
   end

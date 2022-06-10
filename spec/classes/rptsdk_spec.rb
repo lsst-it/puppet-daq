@@ -57,7 +57,7 @@ describe 'daq::rptsdk' do
           ensure: 'link',
           owner: 'root',
           group: 'root',
-          target: '/opt/lsst/rpt-sdk/V3.5.3',
+          target: 'V3.5.3',
         )
       end
     end

@@ -22,7 +22,17 @@ describe 'daq::service::rce class' do
     it { is_expected.to be_owned_by 'root' }
     it { is_expected.to be_grouped_into 'root' }
     it { is_expected.to be_mode '644' } # serverspec does not like a leading 0
+    # rubocop:disable RSpec/RepeatedDescription
     its(:content) { is_expected.to match %r{interface=#{fact('networking.primary')}} }
+    its(:content) { is_expected.to match %r{backingdir=/var/lib/vrce} }
+    # rubocop:enable RSpec/RepeatedDescription
+  end
+
+  describe file('/var/lib/vrce') do
+    it { is_expected.to be_directory }
+    it { is_expected.to be_owned_by 'root' }
+    it { is_expected.to be_grouped_into 'daq' }
+    it { is_expected.to be_mode '775' } # serverspec does not like a leading 0
   end
 
   describe service('rce') do

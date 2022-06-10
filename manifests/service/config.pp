@@ -8,6 +8,14 @@ class daq::service::config {
 
   $env_conf = {
     interface  => $daq::interface,
+    backingdir => $daq::backingdir,
+  }
+
+  file { $daq::backingdir:
+    ensure => directory,
+    owner  => 'root',
+    group  => 'daq',
+    mode   => '0775',
   }
 
   file { $daq::env_file:

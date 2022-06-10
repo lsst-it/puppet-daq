@@ -23,6 +23,15 @@ describe 'daq::service::rce' do
         end
 
         it do
+          is_expected.to contain_file('/var/lib/vrce').with(
+            ensure: 'directory',
+            owner: 'root',
+            group: 'daq',
+            mode: '0775',
+          )
+        end
+
+        it do
           is_expected.to contain_systemd__unit_file('rce.service')
             .with_content(%r{EnvironmentFile=/etc/sysconfig/daq})
             .with_content(%r{ExecStart=/opt/lsst/daq-sdk/current/x86/bin/dsm_startup})

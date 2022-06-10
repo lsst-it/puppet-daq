@@ -1,4 +1,5 @@
 <%- | String $interface,
+      Stdlib::Absolutepath $backingdir,
 | -%>
 #
 # Configuration for Distributed Storage Service
@@ -11,4 +12,4 @@ interface=<%= $interface %>
 # A list of ATCA locations enclosed in " " or NONE
 virtual_rces="16/3/2 16/3/0"
 
-backingdir=/srv/nfs/lsst-daq/vrce/
+backingdir=<%= $backingdir %>

@@ -2,9 +2,9 @@
   "name": "lsst-daq",
   "version": "0.1.0",
   "author": "AURA/LSST",
-  "summary": "",
+  "summary": "Installs and configures LSST DAQ software",
   "license": "Apache-2.0",
-  "source": "",
+  "source": "https://github.com/lsst-it/puppet-daq",
   "dependencies": [
     {
       "name": "puppetlabs/stdlib",

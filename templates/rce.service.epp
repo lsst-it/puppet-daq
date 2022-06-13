@@ -1,15 +1,19 @@
+<%- | String $env_file,
+      String $current_path,
+| -%>
 [Unit]
 Description=Virtual RCE Proxy
 Requires=network-online.target
 After=network-online.target
+Wants=dsid.service
 
 [Service]
-EnvironmentFile=/etc/lsst/daq.conf
+EnvironmentFile=<%= $env_file %>
 User=rce
 Group=daq
 Type=forking
-ExecStart=/bin/sh -c "${release}/x86/bin/dsm_startup ${backingdir}  ${virtual_ats_rce} ${interface}"
-ExecStop=/usr/bin/killall -u rce
+# XXX dsm_startup expects a training slash on the backingdir path
+ExecStart=<%= $current_path %>/x86/bin/dsm_startup ${backingdir}/ ${interface} $virtual_rces
 #Restart=always
 #RestartSec=10
 CPUSchedulingPolicy=fifo

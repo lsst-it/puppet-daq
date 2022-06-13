@@ -2,9 +2,18 @@
 
 require 'voxpupuli/acceptance/spec_helper_acceptance'
 
-configure_beaker do |host|
-  install_package(host, 'git')
-  install_module_from_forge_on(host, 'puppetlabs/accounts', '> 7 < 8')
+configure_beaker
+
+# The rce service appears to have a hardwired check for the existence of an
+# interface named lsst-daq and will fail to startup if it is not present.
+script = <<~SH
+  ip link add name lsst-daq link eth0 type dummy
+  ip a add 192.168.42.1/24 dev lsst-daq
+  ip link set lsst-daq up
+SH
+
+script.split("\n").each do |line|
+  shell(line)
 end
 
 shared_examples 'an idempotent resource' do

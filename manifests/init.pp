@@ -1,36 +1,33 @@
 #
 # @summary Installs and configures LSST DAQ software
 #
-class daq {
-  $conf_dir = '/etc/lsst'
-  $conf_file = "${conf_dir}/daq.conf"
+# @param base_path
+#   LSST software base install directory.  Default: '/opt/lsst'
+#
+# @param conf_path
+#   Service config (systemd EnvironmentFile) path. Default: '/etc/sysconfig'
+#
+# @param backingdir
+#   Service backing / cache directory. Default: '/var/lib/vrce'
+#
+# @param interface
+#   Network interface services should listen on. Default: `lsst-daq`
+#
+class daq (
+  Stdlib::Absolutepath $base_path  = '/opt/lsst',
+  Stdlib::Absolutepath $conf_path  = '/etc/sysconfig',
+  Stdlib::Absolutepath $backingdir = '/var/lib/vrce',
+  String $interface                = 'lsst-daq',
+) {
+  $env_file = "${conf_path}/daq"
 
-  file { $conf_dir:
-    ensure => directory,
-    mode   => '0755',
-    owner  => 'root',
-    group  => 'root',
-  }
-
-  file { $conf_file:
-    ensure  => file,
-    mode    => '0644',
-    owner   => 'root',
-    group   => 'root',
-    content => epp("${module_name}/daq.conf.epp"),
-  }
-
-  systemd::unit_file { 'dsid.service':
-    content => epp("${module_name}/dsid.service.epp"),
-  }
-  -> service { 'dsid':
-    enable => true,
-  }
-
-  systemd::unit_file { 'rce.service':
-    content => epp("${module_name}/rce.service.epp"),
-  }
-  -> service { 'rce':
-    enable => true,
-  }
+  ensure_resources('file', {
+      $base_path => {
+        ensure => directory,
+        owner  => 'root',
+        group  => 'root',
+        mode   => '0755',
+        backup => false,
+      },
+  })
 }

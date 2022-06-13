@@ -13,7 +13,7 @@ User=rce
 Group=daq
 Type=forking
 # XXX dsm_startup expects a training slash on the backingdir path
-ExecStart=<%= $current_path %>/x86/bin/dsm_startup ${backingdir}/ ${interface} ${virtual_rces}
+ExecStart=<%= $current_path %>/x86/bin/dsm_startup ${backingdir}/ ${interface} $virtual_rces
 #Restart=always
 #RestartSec=10
 CPUSchedulingPolicy=fifo

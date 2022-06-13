@@ -41,4 +41,9 @@ describe 'daq::service::dsid class' do
     it { is_expected.to be_enabled }
     it { is_expected.to be_running }
   end
+
+  describe process('dsid.service') do
+    its(:user) { is_expected.to eq 'dsid' }
+    its(:count) { is_expected.to eq 1 }
+  end
 end

@@ -25,13 +25,14 @@ class daq::rptsdk (
   # a time.  The $dl_path file resource should protect previously downloaded
   # artifacts from being purged.
   file { $rpt_base_path:
-    ensure  => directory,
-    owner   => 'root',
-    group   => 'root',
-    mode    => '0755',
-    force   => true,
-    purge   => true,
-    recurse => true,
+    ensure    => directory,
+    owner     => 'root',
+    group     => 'root',
+    mode      => '0755',
+    force     => true,
+    purge     => true,
+    recurse   => true,
+    max_files => 10000,
   }
 
   file { $dl_path:

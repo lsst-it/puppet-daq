@@ -18,9 +18,9 @@ describe 'daq::daqsdk' do
             owner: 'root',
             group: 'root',
             mode: '0755',
-            force: true,
-            purge: true,
-            recurse: true,
+            force: false,
+            purge: false,
+            recurse: false,
           )
         end
 
@@ -63,6 +63,32 @@ describe 'daq::daqsdk' do
             group: 'root',
             target: 'R5-V3.2',
           )
+        end
+      end
+
+      context 'with purge parameter' do
+        context 'when true' do
+          let(:params) { { purge: true } }
+
+          it do
+            is_expected.to contain_file('/opt/lsst/daq-sdk').with(
+              force: true,
+              purge: true,
+              recurse: true,
+            )
+          end
+        end
+
+        context 'when false' do
+          let(:params) { { purge: false } }
+
+          it do
+            is_expected.to contain_file('/opt/lsst/daq-sdk').with(
+              force: false,
+              purge: false,
+              recurse: false,
+            )
+          end
         end
       end
     end

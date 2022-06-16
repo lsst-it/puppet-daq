@@ -7,31 +7,35 @@
 # @param version
 #   RPT SDK relase version string
 #
+# @param purge
+#   If true, purge unmanaged files under the install path.
+#
 class daq::rptsdk (
   Stdlib::HTTPUrl $repo_url = 'https://repo-nexus.lsst.org/nexus/repository/daq/rpt-sdk',
-  String          $version  = 'V3.5.3'
+  String          $version  = 'V3.5.3',
+  Boolean         $purge    = false,
 ) {
   require daq
 
-  $rpt_base_path = "${daq::base_path}/rpt-sdk"
-  $dl_path       = "${rpt_base_path}/dl"
-  $archive_name  = "rce-sdk-${version}.tar.gz"
-  $dl_file       = "${dl_path}/${archive_name}"
-  $source        = "${repo_url}/${archive_name}"
-  $install_path  = "${rpt_base_path}/${version}"
-  $current_path  = "${rpt_base_path}/current"
+  $base_path    = "${daq::base_path}/rpt-sdk"
+  $dl_path      = "${base_path}/dl"
+  $archive_name = "rce-sdk-${version}.tar.gz"
+  $dl_file      = "${dl_path}/${archive_name}"
+  $source       = "${repo_url}/${archive_name}"
+  $install_path = "${base_path}/${version}"
+  $current_path = "${base_path}/current"
 
   # Purge unmanaged versions.  Currently, only one version may be installed at
   # a time.  The $dl_path file resource should protect previously downloaded
   # artifacts from being purged.
-  file { $rpt_base_path:
+  file { $base_path:
     ensure    => directory,
     owner     => 'root',
     group     => 'root',
     mode      => '0755',
-    force     => true,
-    purge     => true,
-    recurse   => true,
+    force     => $purge,
+    purge     => $purge,
+    recurse   => $purge,
     max_files => 10000,
   }
 
@@ -46,10 +50,10 @@ class daq::rptsdk (
     ensure       => present,
     cleanup      => false,
     creates      => $install_path,
-    extract_path => $rpt_base_path,
+    extract_path => $base_path,
     extract      => true,
     source       => $source,
-    require      => File[$rpt_base_path],
+    require      => File[$base_path],
   }
   ~> file { $dl_file:
     ensure => file,

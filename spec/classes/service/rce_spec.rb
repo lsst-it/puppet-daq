@@ -9,7 +9,7 @@ describe 'daq::service::rce' do
         facts
       end
 
-      describe 'without any parameters' do
+      context 'without any parameters' do
         it { is_expected.to compile.with_all_deps }
 
         it do

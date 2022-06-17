@@ -75,6 +75,7 @@ The following parameters are available in the `daq::daqsdk` class:
 
 * [`repo_url`](#repo_url)
 * [`version`](#version)
+* [`purge`](#purge)
 
 ##### <a name="repo_url"></a>`repo_url`
 
@@ -92,6 +93,14 @@ DAQ SDK relase version string
 
 Default value: `'R5-V3.2'`
 
+##### <a name="purge"></a>`purge`
+
+Data type: `Boolean`
+
+If true, purge unmanaged files under the install path.
+
+Default value: ``false``
+
 ### <a name="daqrptsdk"></a>`daq::rptsdk`
 
 Installs LSST RPT SDK software
@@ -102,6 +111,7 @@ The following parameters are available in the `daq::rptsdk` class:
 
 * [`repo_url`](#repo_url)
 * [`version`](#version)
+* [`purge`](#purge)
 
 ##### <a name="repo_url"></a>`repo_url`
 
@@ -118,6 +128,14 @@ Data type: `String`
 RPT SDK relase version string
 
 Default value: `'V3.5.3'`
+
+##### <a name="purge"></a>`purge`
+
+Data type: `Boolean`
+
+If true, purge unmanaged files under the install path.
+
+Default value: ``false``
 
 ### <a name="daqservicedsid"></a>`daq::service::dsid`
 

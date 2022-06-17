@@ -9,7 +9,7 @@ describe 'daq::rptsdk' do
         facts
       end
 
-      describe 'without any parameters' do
+      context 'without any parameters' do
         it { is_expected.to compile.with_all_deps }
 
         it do
@@ -18,9 +18,9 @@ describe 'daq::rptsdk' do
             owner: 'root',
             group: 'root',
             mode: '0755',
-            force: true,
-            purge: true,
-            recurse: true,
+            force: false,
+            purge: false,
+            recurse: false,
           )
         end
 
@@ -63,6 +63,32 @@ describe 'daq::rptsdk' do
             group: 'root',
             target: 'V3.5.3',
           )
+        end
+      end
+
+      context 'with purge parameter' do
+        context 'when true' do
+          let(:params) { { purge: true } }
+
+          it do
+            is_expected.to contain_file('/opt/lsst/rpt-sdk').with(
+              force: true,
+              purge: true,
+              recurse: true,
+            )
+          end
+        end
+
+        context 'when false' do
+          let(:params) { { purge: false } }
+
+          it do
+            is_expected.to contain_file('/opt/lsst/rpt-sdk').with(
+              force: false,
+              purge: false,
+              recurse: false,
+            )
+          end
         end
       end
     end

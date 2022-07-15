@@ -30,4 +30,15 @@ class daq (
         backup => false,
       },
   })
+
+  # XXX The current dsid/rce service binaries are linked against libreadline.so.6, which does not exist in EL8.
+  # error while loading shared libraries: libreadline.so.6: cannot open shared object file: No such file or directory
+  if $facts['os']['family'] == 'RedHat' and versioncmp($facts['os']['release']['major'], '8') >= 0 {
+    file { '/usr/lib64/libreadline.so.6':
+      ensure => link,
+      owner  => 'root',
+      group  => 'root',
+      target => 'libreadline.so.7.0',
+    }
+  }
 }

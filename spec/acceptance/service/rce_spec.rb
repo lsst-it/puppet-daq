@@ -3,7 +3,7 @@
 require 'spec_helper_acceptance'
 
 describe 'daq::service::rce class' do
-  let(:pp) do
+  let(:manifest) do
     <<-PP
     group { 'daq': }
     user { 'rce': gid => 'daq' }

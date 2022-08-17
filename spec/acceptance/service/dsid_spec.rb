@@ -3,7 +3,7 @@
 require 'spec_helper_acceptance'
 
 describe 'daq::service::dsid class' do
-  let(:pp) do
+  let(:manifest) do
     <<-PP
     group { 'daq': }
     user { 'dsid': gid => 'daq' }

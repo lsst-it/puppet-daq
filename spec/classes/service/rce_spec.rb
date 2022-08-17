@@ -18,7 +18,7 @@ describe 'daq::service::rce' do
             mode: '0644',
             owner: 'root',
             group: 'root',
-            content: %r{interface=lsst-daq},
+            content: %r{interface=lsst-daq}
           )
         end
 
@@ -27,24 +27,24 @@ describe 'daq::service::rce' do
             ensure: 'directory',
             owner: 'root',
             group: 'daq',
-            mode: '0775',
+            mode: '0775'
           )
         end
 
         it do
-          is_expected.to contain_systemd__unit_file('rce.service')
-            .with_content(%r{EnvironmentFile=/etc/sysconfig/daq})
-            .with_content(%r{ExecStart=/opt/lsst/daq-sdk/current/x86/bin/dsm_startup})
+          is_expected.to contain_systemd__unit_file('rce.service').
+            with_content(%r{EnvironmentFile=/etc/sysconfig/daq}).
+            with_content(%r{ExecStart=/opt/lsst/daq-sdk/current/x86/bin/dsm_startup})
         end
 
         it do
-          is_expected.to contain_service('rce')
-            .with(
+          is_expected.to contain_service('rce').
+            with(
               ensure: 'running',
-              enable: true,
-            )
-            .that_subscribes_to('File[/etc/sysconfig/daq]')
-            .that_subscribes_to('Systemd::Unit_file[rce.service]')
+              enable: true
+            ).
+            that_subscribes_to('File[/etc/sysconfig/daq]').
+            that_subscribes_to('Systemd::Unit_file[rce.service]')
         end
       end
     end

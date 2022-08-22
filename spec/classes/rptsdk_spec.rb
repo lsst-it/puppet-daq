@@ -20,7 +20,7 @@ describe 'daq::rptsdk' do
             mode: '0755',
             force: false,
             purge: false,
-            recurse: false,
+            recurse: false
           )
         end
 
@@ -29,13 +29,13 @@ describe 'daq::rptsdk' do
             ensure: 'directory',
             mode: '0755',
             owner: 'root',
-            group: 'root',
+            group: 'root'
           )
         end
 
         it do
           is_expected.to contain_archive('/opt/lsst/rpt-sdk/dl/rce-sdk-V3.5.3.tar.gz').with(
-            source: 'https://repo-nexus.lsst.org/nexus/repository/daq/rpt-sdk/rce-sdk-V3.5.3.tar.gz',
+            source: 'https://repo-nexus.lsst.org/nexus/repository/daq/rpt-sdk/rce-sdk-V3.5.3.tar.gz'
           )
         end
 
@@ -44,7 +44,7 @@ describe 'daq::rptsdk' do
             ensure: 'file',
             mode: '0644',
             owner: 'root',
-            group: 'root',
+            group: 'root'
           )
         end
 
@@ -52,7 +52,7 @@ describe 'daq::rptsdk' do
           is_expected.to contain_file('/opt/lsst/rpt-sdk/V3.5.3').with(
             owner: 'root',
             group: 'root',
-            recurse: true,
+            recurse: true
           )
         end
 
@@ -61,7 +61,7 @@ describe 'daq::rptsdk' do
             ensure: 'link',
             owner: 'root',
             group: 'root',
-            target: 'V3.5.3',
+            target: 'V3.5.3'
           )
         end
       end
@@ -74,7 +74,7 @@ describe 'daq::rptsdk' do
             is_expected.to contain_file('/opt/lsst/rpt-sdk').with(
               force: true,
               purge: true,
-              recurse: true,
+              recurse: true
             )
           end
         end
@@ -86,7 +86,7 @@ describe 'daq::rptsdk' do
             is_expected.to contain_file('/opt/lsst/rpt-sdk').with(
               force: false,
               purge: false,
-              recurse: false,
+              recurse: false
             )
           end
         end

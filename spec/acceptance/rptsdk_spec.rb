@@ -3,7 +3,7 @@
 require 'spec_helper_acceptance'
 
 describe 'daq::rptsdk class' do
-  let(:pp) do
+  let(:manifest) do
     <<-PP
     include daq::rptsdk
     PP

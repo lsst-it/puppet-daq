@@ -9,10 +9,10 @@
 #### Public Classes
 
 * [`daq`](#daq): Installs and configures LSST DAQ software
-* [`daq::daqsdk`](#daqdaqsdk): Installs LSST DAQ SDK software
-* [`daq::rptsdk`](#daqrptsdk): Installs LSST RPT SDK software
-* [`daq::service::dsid`](#daqservicedsid): Manage DAQ DSID service
-* [`daq::service::rce`](#daqservicerce): Manage DAQ RCE service
+* [`daq::daqsdk`](#daq--daqsdk): Installs LSST DAQ SDK software
+* [`daq::rptsdk`](#daq--rptsdk): Installs LSST RPT SDK software
+* [`daq::service::dsid`](#daq--service--dsid): Manage DAQ DSID service
+* [`daq::service::rce`](#daq--service--rce): Manage DAQ RCE service
 
 #### Private Classes
 
@@ -28,12 +28,12 @@ Installs and configures LSST DAQ software
 
 The following parameters are available in the `daq` class:
 
-* [`base_path`](#base_path)
-* [`conf_path`](#conf_path)
-* [`backingdir`](#backingdir)
-* [`interface`](#interface)
+* [`base_path`](#-daq--base_path)
+* [`conf_path`](#-daq--conf_path)
+* [`backingdir`](#-daq--backingdir)
+* [`interface`](#-daq--interface)
 
-##### <a name="base_path"></a>`base_path`
+##### <a name="-daq--base_path"></a>`base_path`
 
 Data type: `Stdlib::Absolutepath`
 
@@ -41,7 +41,7 @@ LSST software base install directory.  Default: '/opt/lsst'
 
 Default value: `'/opt/lsst'`
 
-##### <a name="conf_path"></a>`conf_path`
+##### <a name="-daq--conf_path"></a>`conf_path`
 
 Data type: `Stdlib::Absolutepath`
 
@@ -49,7 +49,7 @@ Service config (systemd EnvironmentFile) path. Default: '/etc/sysconfig'
 
 Default value: `'/etc/sysconfig'`
 
-##### <a name="backingdir"></a>`backingdir`
+##### <a name="-daq--backingdir"></a>`backingdir`
 
 Data type: `Stdlib::Absolutepath`
 
@@ -57,7 +57,7 @@ Service backing / cache directory. Default: '/var/lib/vrce'
 
 Default value: `'/var/lib/vrce'`
 
-##### <a name="interface"></a>`interface`
+##### <a name="-daq--interface"></a>`interface`
 
 Data type: `String`
 
@@ -65,7 +65,7 @@ Network interface services should listen on. Default: `lsst-daq`
 
 Default value: `'lsst-daq'`
 
-### <a name="daqdaqsdk"></a>`daq::daqsdk`
+### <a name="daq--daqsdk"></a>`daq::daqsdk`
 
 Installs LSST DAQ SDK software
 
@@ -73,11 +73,11 @@ Installs LSST DAQ SDK software
 
 The following parameters are available in the `daq::daqsdk` class:
 
-* [`repo_url`](#repo_url)
-* [`version`](#version)
-* [`purge`](#purge)
+* [`repo_url`](#-daq--daqsdk--repo_url)
+* [`version`](#-daq--daqsdk--version)
+* [`purge`](#-daq--daqsdk--purge)
 
-##### <a name="repo_url"></a>`repo_url`
+##### <a name="-daq--daqsdk--repo_url"></a>`repo_url`
 
 Data type: `Stdlib::HTTPUrl`
 
@@ -85,7 +85,7 @@ DAQ SDK Nexus repo
 
 Default value: `'https://repo-nexus.lsst.org/nexus/repository/daq/daq-sdk'`
 
-##### <a name="version"></a>`version`
+##### <a name="-daq--daqsdk--version"></a>`version`
 
 Data type: `String`
 
@@ -93,15 +93,15 @@ DAQ SDK relase version string
 
 Default value: `'R5-V3.2'`
 
-##### <a name="purge"></a>`purge`
+##### <a name="-daq--daqsdk--purge"></a>`purge`
 
 Data type: `Boolean`
 
 If true, purge unmanaged files under the install path.
 
-Default value: ``false``
+Default value: `false`
 
-### <a name="daqrptsdk"></a>`daq::rptsdk`
+### <a name="daq--rptsdk"></a>`daq::rptsdk`
 
 Installs LSST RPT SDK software
 
@@ -109,11 +109,11 @@ Installs LSST RPT SDK software
 
 The following parameters are available in the `daq::rptsdk` class:
 
-* [`repo_url`](#repo_url)
-* [`version`](#version)
-* [`purge`](#purge)
+* [`repo_url`](#-daq--rptsdk--repo_url)
+* [`version`](#-daq--rptsdk--version)
+* [`purge`](#-daq--rptsdk--purge)
 
-##### <a name="repo_url"></a>`repo_url`
+##### <a name="-daq--rptsdk--repo_url"></a>`repo_url`
 
 Data type: `Stdlib::HTTPUrl`
 
@@ -121,7 +121,7 @@ RPT SDK Nexus repo
 
 Default value: `'https://repo-nexus.lsst.org/nexus/repository/daq/rpt-sdk'`
 
-##### <a name="version"></a>`version`
+##### <a name="-daq--rptsdk--version"></a>`version`
 
 Data type: `String`
 
@@ -129,19 +129,19 @@ RPT SDK relase version string
 
 Default value: `'V3.5.3'`
 
-##### <a name="purge"></a>`purge`
+##### <a name="-daq--rptsdk--purge"></a>`purge`
 
 Data type: `Boolean`
 
 If true, purge unmanaged files under the install path.
 
-Default value: ``false``
+Default value: `false`
 
-### <a name="daqservicedsid"></a>`daq::service::dsid`
+### <a name="daq--service--dsid"></a>`daq::service::dsid`
 
 Manage DAQ DSID service
 
-### <a name="daqservicerce"></a>`daq::service::rce`
+### <a name="daq--service--rce"></a>`daq::service::rce`
 
 Manage DAQ RCE service
 

@@ -72,9 +72,10 @@ class daq::daqsdk (
   }
 
   file { $current_path:
-    ensure => link,
-    owner  => 'root',
-    group  => 'root',
-    target => $version,
+    ensure  => link,
+    owner   => 'root',
+    group   => 'root',
+    target  => $version,
+    replace => false,
   }
 }

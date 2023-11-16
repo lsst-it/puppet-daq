@@ -42,4 +42,30 @@ describe 'daq::daqsdk class' do
     it { is_expected.to be_grouped_into 'root' }
     it { is_expected.to be_mode '644' } # serverspec does not like a leading 0
   end
+
+  context '/opt/lsst/daq-sdk/current symlink manually changed' do
+    let(:manifest) do
+      <<-PP
+      include daq::daqsdk
+      PP
+    end
+
+    before(:context) do
+      shell('ln -snf /tmp /opt/lsst/daq-sdk/current')
+    end
+
+    after(:context) do
+      # cleanup so as not to break other tests
+      shell('rm -rf /opt/lsst/daq-sdk/current')
+    end
+
+    it_behaves_like 'an idempotent resource'
+
+    describe file('/opt/lsst/daq-sdk/current') do
+      it { is_expected.to be_symlink }
+      it { is_expected.to be_linked_to '/tmp' }
+      it { is_expected.to be_owned_by 'root' }
+      it { is_expected.to be_grouped_into 'root' }
+    end
+  end
 end

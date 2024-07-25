@@ -48,5 +48,12 @@ class daq (
       group  => 'root',
       target => $readline,
     }
+
+    file { '/usr/lib64/libreadline.so.7':
+      ensure => link,
+      owner  => 'root',
+      group  => 'root',
+      target => $readline,
+    }
   }
 }

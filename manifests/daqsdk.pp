@@ -12,7 +12,7 @@
 #
 class daq::daqsdk (
   Stdlib::HTTPUrl $repo_url = 'https://repo-nexus.lsst.org/nexus/repository/daq/daq-sdk',
-  String          $version  = 'R5-V3.2',
+  String          $version  = 'R5-V10.3',
   Boolean         $purge    = false,
 ) {
   require daq

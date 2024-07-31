@@ -21,12 +21,6 @@
   ],
   "operatingsystem_support": [
     {
-      "operatingsystem": "CentOS",
-      "operatingsystemrelease": [
-        "7"
-      ]
-    },
-    {
       "operatingsystem": "AlmaLinux",
       "operatingsystemrelease": [
         "8",

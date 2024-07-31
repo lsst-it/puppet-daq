@@ -31,22 +31,30 @@ class daq (
       },
   })
 
-  # XXX The current dsid/rce service binaries are linked against
-  # libreadline.so.6, which does not exist in EL8+. error while loading shared
-  # libraries: libreadline.so.6: cannot open shared object file: No such file or
-  # directory
-  if fact('os.family') == 'RedHat' and versioncmp(fact('os.release.major'), '8') >= 0 {
-    $readline = fact('os.release.major') ? {
+  if fact('os.family') == 'RedHat' {
+    # XXX daqsdk < V10 is linked against libreadline.so.6, which does not
+    # exist in EL8+. While daqsdk >= V10 is linked against libreadline.so.7.
+    $os_readline = fact('os.release.major') ? {
       '8'     => 'libreadline.so.7.0',
       '9'     => 'libreadline.so.8.1',
       default => 'libreadline.so.8.1',
     }
 
-    file { '/usr/lib64/libreadline.so.6':
-      ensure => link,
-      owner  => 'root',
-      group  => 'root',
-      target => $readline,
+    $legacy_readline_versions = fact('os.release.major') ? {
+      # EL8 natively has libreadline.so.7
+      '8'     => ['6'],
+      # EL9+
+      '9'     => ['6', '7'],
+      default => ['6', '7'],
+    }
+
+    $legacy_readline_versions.each |$v| {
+      file { "/usr/lib64/libreadline.so.${v}":
+        ensure => link,
+        owner  => 'root',
+        group  => 'root',
+        target => $os_readline,
+      }
     }
   }
 }

@@ -34,13 +34,13 @@ describe 'daq::daqsdk' do
         end
 
         it do
-          is_expected.to contain_archive('/opt/lsst/daq-sdk/dl/R5-V3.2.tgz').with(
-            source: 'https://repo-nexus.lsst.org/nexus/repository/daq/daq-sdk/R5-V3.2.tgz'
+          is_expected.to contain_archive('/opt/lsst/daq-sdk/dl/R5-V10.3.tgz').with(
+            source: 'https://repo-nexus.lsst.org/nexus/repository/daq/daq-sdk/R5-V10.3.tgz'
           )
         end
 
         it do
-          is_expected.to contain_file('/opt/lsst/daq-sdk/dl/R5-V3.2.tgz').with(
+          is_expected.to contain_file('/opt/lsst/daq-sdk/dl/R5-V10.3.tgz').with(
             ensure: 'file',
             mode: '0644',
             owner: 'root',
@@ -49,7 +49,7 @@ describe 'daq::daqsdk' do
         end
 
         it do
-          is_expected.to contain_file('/opt/lsst/daq-sdk/R5-V3.2').with(
+          is_expected.to contain_file('/opt/lsst/daq-sdk/R5-V10.3').with(
             owner: 'root',
             group: 'root',
             recurse: true
@@ -61,7 +61,7 @@ describe 'daq::daqsdk' do
             ensure: 'link',
             owner: 'root',
             group: 'root',
-            target: 'R5-V3.2'
+            target: 'R5-V10.3'
           )
         end
       end

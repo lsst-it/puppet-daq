@@ -4,6 +4,15 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
+## [v2.4.0](https://github.com/lsst-it/puppet-daq/tree/v2.4.0) (2024-08-01)
+
+[Full Changelog](https://github.com/lsst-it/puppet-daq/compare/v2.3.0...v2.4.0)
+
+**Implemented enhancements:**
+
+- add support for daqsdk \>= R5-V10 [\#34](https://github.com/lsst-it/puppet-daq/pull/34) ([jhoblitt](https://github.com/jhoblitt))
+- \(puppet-daq\) add license file [\#30](https://github.com/lsst-it/puppet-daq/pull/30) ([dtapiacl](https://github.com/dtapiacl))
+
 ## [v2.3.0](https://github.com/lsst-it/puppet-daq/tree/v2.3.0) (2023-11-16)
 
 [Full Changelog](https://github.com/lsst-it/puppet-daq/compare/v2.2.0...v2.3.0)

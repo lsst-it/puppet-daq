@@ -91,7 +91,7 @@ Data type: `String`
 
 DAQ SDK relase version string
 
-Default value: `'R5-V3.2'`
+Default value: `'R5-V10.3'`
 
 ##### <a name="-daq--daqsdk--purge"></a>`purge`
 

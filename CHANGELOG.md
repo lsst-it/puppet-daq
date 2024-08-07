@@ -4,6 +4,14 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
+## [v2.5.0](https://github.com/lsst-it/puppet-daq/tree/v2.5.0) (2024-08-07)
+
+[Full Changelog](https://github.com/lsst-it/puppet-daq/compare/v2.4.0...v2.5.0)
+
+**Implemented enhancements:**
+
+- allow puppet/systemd 7.x [\#36](https://github.com/lsst-it/puppet-daq/pull/36) ([jhoblitt](https://github.com/jhoblitt))
+
 ## [v2.4.0](https://github.com/lsst-it/puppet-daq/tree/v2.4.0) (2024-08-01)
 
 [Full Changelog](https://github.com/lsst-it/puppet-daq/compare/v2.3.0...v2.4.0)

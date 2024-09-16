@@ -13,6 +13,10 @@ spec/spec_helper_acceptance.rb:
   delete: true
 ".github/SECURITY.md":
   delete: true
+".rubocop.yml":
+  extra:
+    RSpec/RepeatedExampleGroupBody:
+      Enabled: false
 Gemfile:
   optional:
     ":test":

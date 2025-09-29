@@ -22,13 +22,13 @@ class daq (
   $env_file = "${conf_path}/daq"
 
   ensure_resources('file', {
-      $base_path => {
-        ensure => directory,
-        owner  => 'root',
-        group  => 'root',
-        mode   => '0755',
-        backup => false,
-      },
+    $base_path => {
+      ensure => directory,
+      owner  => 'root',
+      group  => 'root',
+      mode   => '0755',
+      backup => false,
+    },
   })
 
   if fact('os.family') == 'RedHat' {

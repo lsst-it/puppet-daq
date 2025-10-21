@@ -4,6 +4,16 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
+## [v2.7.0](https://github.com/lsst-it/puppet-daq/tree/v2.7.0) (2025-10-21)
+
+[Full Changelog](https://github.com/lsst-it/puppet-daq/compare/v2.6.0...v2.7.0)
+
+**Implemented enhancements:**
+
+- \(metadata.json\) Bump archiver version constraint [\#56](https://github.com/lsst-it/puppet-daq/pull/56) ([badenerb](https://github.com/badenerb))
+- Update actions/labeler action to v6 [\#51](https://github.com/lsst-it/puppet-daq/pull/51) ([renovate[bot]](https://github.com/apps/renovate))
+- Update actions/checkout action to v5 [\#49](https://github.com/lsst-it/puppet-daq/pull/49) ([renovate[bot]](https://github.com/apps/renovate))
+
 ## [v2.6.0](https://github.com/lsst-it/puppet-daq/tree/v2.6.0) (2024-12-20)
 
 [Full Changelog](https://github.com/lsst-it/puppet-daq/compare/v2.5.0...v2.6.0)

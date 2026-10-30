@@ -4,6 +4,23 @@ All notable changes to this project will be documented in this file.
 Each new release typically also includes the latest modulesync defaults.
 These should not affect the functionality of the module.
 
+## [v3.0.0](https://github.com/lsst-it/puppet-daq/tree/v3.0.0) (2026-10-30)
+
+[Full Changelog](https://github.com/lsst-it/puppet-daq/compare/v2.7.0...v3.0.0)
+
+**Breaking changes:**
+
+- drop puppet 7 [\#61](https://github.com/lsst-it/puppet-daq/pull/61) ([glennmorris](https://github.com/glennmorris))
+
+**Implemented enhancements:**
+
+- Add libcfitsio.so.7 symlink [\#65](https://github.com/lsst-it/puppet-daq/pull/65) ([glennmorris](https://github.com/glennmorris))
+- Update actions/labeler action to v7 [\#63](https://github.com/lsst-it/puppet-daq/pull/63) ([renovate[bot]](https://github.com/apps/renovate))
+- Update actions/checkout action to v7 [\#62](https://github.com/lsst-it/puppet-daq/pull/62) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency voxpupuli-test to v14 [\#60](https://github.com/lsst-it/puppet-daq/pull/60) ([renovate[bot]](https://github.com/apps/renovate))
+- Update dependency puppet\_metadata to v6 [\#59](https://github.com/lsst-it/puppet-daq/pull/59) ([renovate[bot]](https://github.com/apps/renovate))
+- Update actions/checkout action to v6 [\#58](https://github.com/lsst-it/puppet-daq/pull/58) ([renovate[bot]](https://github.com/apps/renovate))
+
 ## [v2.7.0](https://github.com/lsst-it/puppet-daq/tree/v2.7.0) (2025-10-21)
 
 [Full Changelog](https://github.com/lsst-it/puppet-daq/compare/v2.6.0...v2.7.0)

@@ -23,7 +23,7 @@ describe 'daq::service::dsid class' do
     it { is_expected.to be_grouped_into 'root' }
     it { is_expected.to be_mode '644' } # serverspec does not like a leading 0
     its(:content) { is_expected.to match %r{interface=#{fact('networking.primary')}} }
-    its(:content) { is_expected.to match %r{backingdir=/var/lib/vrce} }
+    its(:content) { is_expected.to include('backingdir=/var/lib/vrce') }
   end
 
   describe file('/var/lib/vrce') do

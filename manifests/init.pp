@@ -56,5 +56,20 @@ class daq (
         target => $os_readline,
       }
     }
+
+    $os_cfitsio = fact('os.release.major') ? {
+      default => 'libcfitsio.so.9',
+    }
+
+    $legacy_cfitsio_version = fact('os.release.major') ? {
+      default => '7',
+    }
+
+    file { "/usr/lib64/libcfitsio.so.${legacy_cfitsio_version}":
+      ensure => link,
+      owner  => 'root',
+      group  => 'root',
+      target => $os_cfitsio,
+    }
   }
 }

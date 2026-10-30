@@ -144,4 +144,3 @@ Manage DAQ DSID service
 ### <a name="daq--service--rce"></a>`daq::service::rce`
 
 Manage DAQ RCE service
-
